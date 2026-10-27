@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RevisionReps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;600&display=swap">
+<style>
+:root{--bg:#fff;--sf:#fff;--tx:#0b1b3d;--mu:#4f5d7a;--ac:#0b2a6b;--ai:#fff;--bd:#cfd7e6;--ok:#12805c;--no:#c4361f;--dot:#7f9bd6;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 1.05rem/1.55 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:680px;margin:0 auto;padding:20px 20px 64px}
+h1,h2,h3,.logo,.row b{font-family:"Barlow Condensed","Arial Narrow",Impact,sans-serif;font-weight:800;margin:0}
+h1{font-size:clamp(2.6rem,10vw,4.6rem);line-height:.95;margin:36px 0 18px;letter-spacing:-.01em}
+h2{font-size:1.9rem;line-height:1.1;margin:32px 0 12px}
+h3{font-size:1.3rem;margin:24px 0 8px}
+p{margin:0 0 14px;max-width:60ch}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-size:1.5rem;display:flex;align-items:center;gap:8px;background:none;border:0;color:var(--tx);cursor:pointer;padding:0}
+.logo i{width:10px;height:26px;background:var(--ac);border-radius:2px;display:block}
+.badge{background:var(--ac);color:#fff;font-weight:600;padding:4px 12px;border-radius:99px;font-size:.95rem;white-space:nowrap}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.cta{background:var(--ac);color:var(--ai);border:0;border-radius:10px;padding:14px 22px;font-weight:600;font-size:1.05rem}
+.ghost{background:none;border:2px solid var(--bd);border-radius:10px;padding:12px 20px;font-weight:600}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;background:var(--ac);color:#fff;border:0;border-radius:12px;padding:16px 18px;margin-bottom:10px;transition:transform .12s}
+.row:hover{transform:translateX(4px)}
+.row b{font-size:1.55rem;line-height:1.1}
+.row small{display:block;color:#c5d3f2;font-size:.9rem}
+.subs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.subs .row{margin:0}
+.row[disabled]{opacity:.5;cursor:default}
+.row[disabled]:hover{transform:none}
+.plates{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;max-width:90px}
+.plates span{width:12px;height:12px;border-radius:50%;border:2px solid var(--dot)}
+.plates span.on{background:#fff;border-color:#fff}
+.fact{background:var(--ac);color:#fff;padding:12px 16px;margin:0 0 10px;border-radius:10px}
+.bar{height:8px;background:var(--bd);border-radius:99px;overflow:hidden;margin:20px 0 6px}
+.bar div{height:100%;background:var(--ac);transition:width .25s}
+.meta{color:var(--mu);font-size:.95rem;margin:0}
+.q{font-size:1.3rem;font-weight:600;line-height:1.35;margin:18px 0}
+.opt{display:block;width:100%;text-align:left;background:var(--sf);border:2px solid var(--bd);border-radius:12px;padding:13px 16px;margin-bottom:10px;font-size:1.05rem}
+.opt:not([disabled]):hover{border-color:var(--ac)}
+.opt.good{border-color:var(--ok);background:#e6f4ee}
+textarea{width:100%;font:inherit;color:var(--tx);background:#fff;border:2px solid var(--bd);border-radius:12px;padding:12px;margin:0 0 14px;resize:vertical}
+textarea:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.tick{display:flex;gap:10px;align-items:flex-start;padding:8px 0;cursor:pointer}
+.tick input{width:22px;height:22px;margin-top:2px;accent-color:var(--ac);flex-shrink:0}
+.seg{display:flex;margin:16px 0}
+.seg button{flex:1;padding:10px 14px;border:2px solid var(--ac);background:#fff;color:var(--ac);font-weight:600}
+.seg button:first-child{border-radius:10px 0 0 10px}
+.seg button:last-child{border-radius:0 10px 10px 0;border-left:0}
+.seg button.on{background:var(--ac);color:#fff}
+summary{cursor:pointer;margin-bottom:8px}
+@media print{.top,.acts,.foot,button,.note:last-child{display:none!important}main{max-width:none;padding:0}.fact{background:#fff;color:#000;border:1px solid #000}}
+.opt.bad{border-color:var(--no)}
+.why{border-left:4px solid var(--ok);padding:4px 14px;margin:16px 0}
+.why.no{border-color:var(--no)}
+.score{font-family:"Barlow Condensed",Impact,sans-serif;font-weight:800;font-size:5rem;line-height:1;margin:20px 0 8px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.note,.foot{color:var(--mu);font-size:.9rem}
+.foot{margin-top:40px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><button class="logo" id="home" aria-label="RevisionReps home"><i></i>RevisionReps</button><span class="badge" id="cnt"></span></div>
+<div id="app"></div>
+<p class="foot">Original practice material written for RevisionReps. Not affiliated with or endorsed by AQA.</p>
+</main>
+<script>
+var T=[
+{id:"cell",n:"Cell biology",f:["Eukaryotic cells (plant and animal) have a nucleus. Prokaryotic cells, like bacteria, have their DNA free in the cytoplasm.","Mitochondria release energy in aerobic respiration, ribosomes make proteins, and chloroplasts (plants only) carry out photosynthesis.","Diffusion moves particles from high to low concentration. Osmosis is the diffusion of water across a partially permeable membrane. Active transport moves substances against the gradient and needs energy."],q:[
+{q:"Which part of a cell is the site of aerobic respiration?",o:["Ribosome","Chloroplast","Mitochondrion","Vacuole"],a:2,e:"Mitochondria contain the enzymes for aerobic respiration. Ribosomes make proteins and chloroplasts carry out photosynthesis."},
+{q:"How does active transport differ from diffusion?",o:["It moves particles down a concentration gradient","It moves particles against a concentration gradient using energy","It only moves water","It needs no energy"],a:1,e:"Active transport works against the concentration gradient, so the cell has to use energy from respiration."},
+{q:"A potato chip is left in a very concentrated sugar solution. What happens to its mass?",o:["It increases because water enters","It stays the same","It decreases because water leaves by osmosis","It increases because sugar enters"],a:2,e:"Water moves from the dilute solution inside the chip to the more concentrated solution outside, so the chip loses mass."},
+{q:"Which structure controls the movement of substances into and out of an animal cell?",o:["Cell membrane","Cell wall","Nucleus","Cytoplasm"],a:0,e:"The cell membrane is partially permeable, so it controls what enters and leaves."},
+{q:"A cell has a diameter of 0.02 mm. What is this in micrometres (µm)?",o:["0.2 µm","2 µm","20 µm","200 µm"],a:2,e:"1 mm = 1000 µm, so 0.02 × 1000 = 20 µm."},
+{q:"What is the function of the cell wall in a plant cell?",o:["To release energy","To strengthen the cell and give support","To make proteins","To control the nucleus"],a:1,e:"Cell walls made of cellulose strengthen and support the cell."},
+{q:"Mitosis in a body cell produces:",o:["Four genetically different cells","Two genetically identical cells","Two cells with half the chromosomes","One larger cell"],a:1,e:"Mitosis makes two genetically identical daughter cells, used for growth and repair."},
+{q:"What is a stem cell?",o:["A cell that can only make red blood cells","A dead cell","An undifferentiated cell that can become other cell types","A cell with no nucleus"],a:2,e:"Stem cells are undifferentiated and can differentiate into specialised cells."},
+{q:"Why does a red blood cell have no nucleus?",o:["To make room for more haemoglobin","To help it divide","To stop it using oxygen","To make it larger"],a:0,e:"No nucleus leaves more space for haemoglobin, which carries oxygen."},
+{q:"Which is an example of diffusion in the human body?",o:["Glucose absorbed from the gut when its concentration is low","Oxygen moving from the alveoli into the blood","Mineral ions entering root hair cells","Sodium ions pumped out of a nerve cell"],a:1,e:"Oxygen moves down its concentration gradient. The other three involve active transport."}]},
+{id:"org",n:"Organisation",f:["Amylase breaks starch down into sugars, protease breaks proteins into amino acids, and lipase breaks lipids into fatty acids and glycerol.","Bile is made in the liver and stored in the gall bladder. It neutralises stomach acid and emulsifies fat to give lipase a bigger surface area.","The right side of the heart pumps blood to the lungs. The left side pumps oxygenated blood around the body."],q:[
+{q:"Where is bile stored?",o:["Liver","Pancreas","Small intestine","Gall bladder"],a:3,e:"Bile is made in the liver but stored in the gall bladder until it is released into the small intestine."},
+{q:"Which enzyme breaks down proteins?",o:["Protease","Amylase","Lipase","Catalase"],a:0,e:"Protease breaks proteins into amino acids. Amylase works on starch and lipase on fats."},
+{q:"Which vessel carries oxygenated blood from the lungs to the heart?",o:["Pulmonary artery","Aorta","Vena cava","Pulmonary vein"],a:3,e:"The pulmonary vein returns oxygenated blood to the left atrium. Veins carry blood towards the heart."},
+{q:"Which test shows that a food contains starch?",o:["Biuret solution turns purple","Iodine turns blue-black","Benedict’s solution turns brick red","Ethanol turns cloudy"],a:1,e:"Iodine turns blue-black with starch. Biuret tests for protein and Benedict’s for sugars."},
+{q:"What do the coronary arteries do?",o:["Carry blood to the lungs","Supply the heart muscle with oxygenated blood","Carry blood from the body to the heart","Take blood to the brain"],a:1,e:"Coronary arteries supply the heart muscle, so a blockage can cause a heart attack."},
+{q:"Which part of a leaf is the main site of photosynthesis?",o:["Upper epidermis","Palisade mesophyll","Spongy mesophyll","Guard cells"],a:1,e:"Palisade cells are packed with chloroplasts and sit near the top of the leaf."},
+{q:"Which tissue carries water up a plant from the roots?",o:["Phloem","Stomata","Xylem","Palisade"],a:2,e:"Xylem carries water and mineral ions upwards. Phloem carries sugars."},
+{q:"A resting heart rate is 70 beats per minute and each beat pumps 75 cm³ of blood. What is the cardiac output?",o:["145 cm³/min","5250 cm³/min","525 cm³/min","0.93 cm³/min"],a:1,e:"Cardiac output = heart rate × stroke volume = 70 × 75 = 5250 cm³/min."},
+{q:"What is the main effect of statins?",o:["They lower blood cholesterol","They replace damaged valves","They lower blood glucose","They speed up the heart"],a:0,e:"Statins reduce blood cholesterol, lowering the risk of fatty deposits in arteries."},
+{q:"What is the job of a stent in a coronary artery?",o:["To lower cholesterol","To pump blood","To hold the artery open","To replace a valve"],a:2,e:"A stent is a mesh tube that keeps the artery open so blood can flow."}]},
+{id:"inf",n:"Infection and response",f:["Pathogens are bacteria, viruses, fungi or protists. They spread through air, water and direct contact.","White blood cells defend you by engulfing pathogens (phagocytosis), making antibodies and making antitoxins.","Vaccines contain a dead or inactive form of a pathogen. They trigger antibodies and memory cells so a later infection is fought off quickly."],q:[
+{q:"Why are antibiotics no use against a virus?",o:["Antibiotics kill bacteria but not viruses","Viruses are too large","Viruses only live outside the body","Antibiotics make viruses mutate"],a:0,e:"Antibiotics target bacteria. Viruses live inside your cells, so they need different treatments."},
+{q:"What is the name for a white blood cell engulfing a pathogen?",o:["Osmosis","Mitosis","Transpiration","Phagocytosis"],a:3,e:"In phagocytosis the white blood cell surrounds the pathogen and digests it."},
+{q:"How does a vaccine protect you?",o:["It kills the pathogen directly","It makes your body produce antibodies and memory cells without causing the disease","It gives you antibiotics","It makes your skin a barrier"],a:1,e:"The inactive pathogen triggers an immune response, and memory cells let your body respond fast next time."},
+{q:"Which type of pathogen causes malaria?",o:["Virus","Bacterium","Fungus","Protist"],a:3,e:"Malaria is caused by a protist, spread by mosquitoes acting as vectors."},
+{q:"What does HIV do if it is not treated?",o:["Attacks the immune system’s white blood cells","Attacks the liver","Damages the skin only","Stops the heart"],a:0,e:"HIV attacks white blood cells and can lead to AIDS."},
+{q:"Which of these is a non-specific defence of the body?",o:["Antibodies","Stomach acid","Memory cells","Antitoxins"],a:1,e:"Stomach acid kills pathogens in food. The others are specific immune responses."},
+{q:"How do bacteria become resistant to antibiotics?",o:["Antibiotics make them mutate on purpose","Resistant bacteria survive and reproduce","They learn from the patient","The immune system helps them"],a:1,e:"Random mutations create resistant bacteria, which survive treatment and pass on the trait."},
+{q:"Rose black spot is caused by a:",o:["Virus","Fungus","Bacterium","Protist"],a:1,e:"Rose black spot is a fungal disease that makes purple or black spots on leaves."},
+{q:"Why is a placebo used in a clinical trial?",o:["To cure the patient","To compare results with those from the real drug","To make the drug cheaper","To speed up testing"],a:1,e:"A placebo contains no drug, so any difference can be linked to the drug itself."},
+{q:"How does a monoclonal antibody find its target cell?",o:["It binds to a specific antigen","It dissolves the cell","It absorbs water","It makes the cell divide"],a:0,e:"Each monoclonal antibody binds only to its matching antigen, for example on a cancer cell."}]},
+{id:"bio",n:"Bioenergetics",f:["Photosynthesis: carbon dioxide + water makes glucose + oxygen, using light energy. It is an endothermic reaction.","Limiting factors of photosynthesis are light intensity, carbon dioxide concentration and temperature.","Aerobic respiration uses oxygen. Anaerobic respiration makes lactic acid in muscles, and ethanol and carbon dioxide in yeast."],q:[
+{q:"What are the products of photosynthesis?",o:["Carbon dioxide and water","Glucose and oxygen","Lactic acid and oxygen","Glucose and carbon dioxide"],a:1,e:"Plants turn carbon dioxide and water into glucose and release oxygen."},
+{q:"What does anaerobic respiration in muscle cells produce?",o:["Ethanol and carbon dioxide","Carbon dioxide and water","Oxygen","Lactic acid"],a:3,e:"In animals, anaerobic respiration makes lactic acid. Yeast makes ethanol and carbon dioxide."},
+{q:"Light intensity is increased but the rate of photosynthesis stops rising. Why?",o:["Plants cannot use light","Another factor, such as carbon dioxide, is now limiting","The chlorophyll has been destroyed","Glucose has run out"],a:1,e:"Once light is no longer the limiting factor, something else like carbon dioxide or temperature holds the rate back."},
+{q:"Which gas do plants take in for photosynthesis?",o:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],a:2,e:"Carbon dioxide diffuses into the leaf through the stomata."},
+{q:"Photosynthesis is endothermic. What does this mean?",o:["It releases energy to the surroundings","It takes in energy from the surroundings","It makes oxygen","It needs no energy"],a:1,e:"Endothermic reactions take in energy, here from light."},
+{q:"Which is the word equation for aerobic respiration?",o:["Glucose + oxygen → carbon dioxide + water","Glucose → lactic acid","Carbon dioxide + water → glucose + oxygen","Glucose → ethanol + carbon dioxide"],a:0,e:"Aerobic respiration uses oxygen to release energy from glucose."},
+{q:"Why do heart rate and breathing rate rise during exercise?",o:["To supply muscles with more oxygen and glucose","To make less carbon dioxide","To cool the lungs","To stop respiration"],a:0,e:"Muscles need more oxygen and glucose, and carbon dioxide must be removed faster."},
+{q:"What is the oxygen debt?",o:["Oxygen stored in muscles","The extra oxygen needed after exercise to break down lactic acid","Oxygen used in photosynthesis","A lack of oxygen in the air"],a:1,e:"After anaerobic exercise, extra oxygen is needed to break down the lactic acid."},
+{q:"Which is a product of anaerobic respiration in yeast?",o:["Lactic acid","Ethanol","Glucose","Oxygen"],a:1,e:"Yeast makes ethanol and carbon dioxide, which is used in brewing and baking."},
+{q:"What does a plant convert glucose into for storage?",o:["Cellulose","Starch","Amylase","Haemoglobin"],a:1,e:"Glucose is stored as starch. Cellulose is used to build cell walls."}]},
+{id:"hom",n:"Homeostasis and response",f:["Homeostasis keeps internal conditions stable, including temperature, blood glucose and water levels.","The nervous system pathway is stimulus, receptor, sensory neurone, CNS, motor neurone, effector, response. Reflexes are fast and automatic.","Insulin from the pancreas lowers blood glucose. In type 1 diabetes the pancreas does not make enough insulin."],q:[
+{q:"Which organ produces insulin?",o:["Liver","Pancreas","Kidney","Stomach"],a:1,e:"The pancreas releases insulin, which causes cells to take up glucose from the blood."},
+{q:"Which type of neurone carries impulses from a receptor to the CNS?",o:["Motor neurone","Relay neurone","Sensory neurone","Effector neurone"],a:2,e:"Sensory neurones carry impulses to the CNS. Motor neurones carry them from the CNS to effectors."},
+{q:"What is a muscle or gland that responds to a stimulus called?",o:["Effector","Receptor","Hormone","Synapse"],a:0,e:"Effectors carry out the response. Receptors detect the stimulus."},
+{q:"Which part of the brain controls heart rate and breathing?",o:["Cerebellum","Cerebral cortex","Medulla","Pituitary gland"],a:2,e:"The medulla controls unconscious activities such as heart rate and breathing."},
+{q:"Which gland is often called the master gland?",o:["Thyroid","Pituitary","Adrenal","Ovary"],a:1,e:"The pituitary releases hormones that control other glands."},
+{q:"Which hormone prepares the body for fight or flight?",o:["Adrenaline","Insulin","Oestrogen","Thyroxine"],a:0,e:"Adrenaline raises heart rate and boosts blood glucose."},
+{q:"What happens when body temperature rises too high?",o:["Shivering starts","Blood vessels constrict","Sweating increases and blood vessels dilate","Hairs stand on end"],a:2,e:"Sweat evaporating and vasodilation help the body lose heat."},
+{q:"Which hormone causes ovulation?",o:["Progesterone","Luteinising hormone (LH)","Testosterone","Insulin"],a:1,e:"LH stimulates the release of an egg. FSH makes eggs mature."},
+{q:"In type 2 diabetes, body cells:",o:["Make too much insulin","No longer respond properly to insulin","Cannot absorb water","Destroy the pancreas"],a:1,e:"Type 2 diabetes involves insulin resistance, often linked to obesity."},
+{q:"Which hormone makes the liver release glucose into the blood?",o:["Insulin","Glucagon","Oestrogen","Progesterone"],a:1,e:"Glucagon raises blood glucose by converting glycogen to glucose."}]},
+{id:"inh",n:"Inheritance and evolution",f:["A gene is a section of DNA that codes for a protein. The genome is all of an organism’s genetic material.","A dominant allele shows if one copy is present. A recessive allele needs two copies. Homozygous means two identical alleles and heterozygous means two different ones.","Natural selection: variation exists, better adapted individuals survive and reproduce, and they pass on their alleles."],q:[
+{q:"A person has the alleles Bb. What is their genotype called?",o:["Homozygous dominant","Homozygous recessive","Heterozygous","Mutant"],a:2,e:"Two different alleles means heterozygous."},
+{q:"Two parents are both Bb, and b is recessive. What is the chance of a child being bb?",o:["0%","25%","50%","75%"],a:1,e:"A Punnett square gives BB, Bb, Bb and bb, so 1 in 4 is bb."},
+{q:"How many chromosomes are in a normal human gamete?",o:["46","92","22","23"],a:3,e:"Gametes are haploid with 23 chromosomes. Body cells have 46, in 23 pairs."},
+{q:"Which type of cell division produces gametes?",o:["Mitosis","Meiosis","Fertilisation","Osmosis"],a:1,e:"Meiosis halves the chromosome number and produces genetically different gametes."},
+{q:"Which sex chromosomes does a human male have?",o:["XX","XY","YY","XO"],a:1,e:"Males are XY and females are XX."},
+{q:"What is the chance that a child will be male?",o:["25%","50%","75%","100%"],a:1,e:"Half of sperm carry Y, so the chance is 50%."},
+{q:"Which of these causes genetic variation?",o:["Mutation","Photosynthesis","Diffusion","Digestion"],a:0,e:"Mutations create new alleles, along with sexual reproduction."},
+{q:"What is selective breeding?",o:["Letting nature choose","Cloning a cell","Choosing parents with desired features to breed","Changing genes with enzymes"],a:2,e:"Humans select organisms with useful features and breed them over many generations."},
+{q:"Why can inbreeding be harmful?",o:["It increases the chance of inherited disorders","It always makes animals larger","It stops mutations","It makes alleles dominant"],a:0,e:"Less variation makes it more likely that harmful recessive alleles pair up."},
+{q:"Who proposed evolution by natural selection?",o:["Mendel","Darwin","Pasteur","Fleming"],a:1,e:"Darwin published the theory in On the Origin of Species."}]},
+{id:"eco",n:"Ecology",f:["Producers make biomass by photosynthesis and start every food chain. Then come primary, secondary and tertiary consumers.","Quadrats estimate population size. Mean per quadrat times total area, divided by the quadrat area, gives the estimate. Transects show change across a habitat.","Photosynthesis takes carbon dioxide out of the air. Respiration, combustion and decay put it back."],q:[
+{q:"Which organism starts a food chain?",o:["Producer","Primary consumer","Decomposer","Predator"],a:0,e:"Producers capture energy from sunlight, so every food chain begins with them."},
+{q:"A 1 m² quadrat has a mean of 4 daisies. The field is 100 m². Estimate the population.",o:["40","25","104","400"],a:3,e:"4 per m² times 100 m² gives 400 daisies."},
+{q:"Which process removes carbon dioxide from the atmosphere?",o:["Respiration","Combustion","Decay","Photosynthesis"],a:3,e:"Plants use carbon dioxide in photosynthesis. The other three processes release it."},
+{q:"What is a community in ecology?",o:["All organisms of one species in a habitat","All the populations of different species in a habitat","The non-living parts of a habitat","One organism and its food"],a:1,e:"A community is all the populations living in an area. A population is one species."},
+{q:"Which of these is an abiotic factor?",o:["Predators","Disease","Temperature","Food supply"],a:2,e:"Abiotic factors are non-living, such as temperature, light and pH."},
+{q:"100 kJ is available at the producer and about 10% is passed on at each stage. How much reaches the primary consumer?",o:["1 kJ","10 kJ","90 kJ","100 kJ"],a:1,e:"10% of 100 kJ is 10 kJ. The rest is lost as heat, waste and movement."},
+{q:"What do decomposers do?",o:["Make glucose","Break down dead material","Carry out photosynthesis","Eat only producers"],a:1,e:"Decomposers break down dead plants and animals, returning nutrients to the soil."},
+{q:"What is biodiversity?",o:["The variety of living organisms in an ecosystem","The mass of living material","The number of habitats on Earth","The amount of carbon in the air"],a:0,e:"High biodiversity means many different species."},
+{q:"Which activity increases carbon dioxide in the atmosphere?",o:["Planting trees","Burning fossil fuels","Restoring peat bogs","Building wind farms"],a:1,e:"Burning fossil fuels releases carbon dioxide stored for millions of years."},
+{q:"Why are there fewer organisms at each higher level of a food chain?",o:["Energy is lost at each stage","Predators are always larger","Producers eat consumers","There is more light"],a:0,e:"Energy is lost as heat and waste, so less biomass supports each higher level."}]}
+];
+var mode="mc",timed=false,ti,W={
+cell:[{q:"Explain how a root hair cell is adapted to take in water and mineral ions from the soil.",m:["The long root hair gives a large surface area","Many mitochondria release energy for active transport of mineral ions","Water enters by osmosis because the cell sap is more concentrated than the soil water"]},{q:"A potato cylinder placed in pure water increases in mass. Explain why.",m:["Water moves into the cylinder by osmosis","From a higher water concentration (pure water) to a lower water concentration (inside the cells)","Through the partially permeable cell membranes"]},
+{q:"Describe the differences between prokaryotic and eukaryotic cells.",m:["Eukaryotic cells have a nucleus; prokaryotic cells do not","Prokaryotic DNA is a single loop in the cytoplasm","Prokaryotic cells are much smaller","Prokaryotic cells may have plasmids"]},
+{q:"Describe the functions of ribosomes and mitochondria.",m:["Ribosomes are where proteins are made","Mitochondria are where aerobic respiration takes place","This releases energy for the cell"]},
+{q:"Explain why diffusion is faster at a higher temperature.",m:["Particles have more kinetic energy","So they move faster","There are more collisions, so net movement from high to low concentration is faster"]},
+{q:"Explain what is meant by differentiation.",m:["Unspecialised cells change to become specialised for a function","They develop different sub-cellular structures","Most animal cells differentiate early, but many plant cells can differentiate throughout life"]},
+{q:"Describe the stages of the cell cycle, including mitosis.",m:["The cell grows and makes more sub-cellular structures","The DNA is copied to form two sets of chromosomes","The chromosomes are pulled to opposite ends of the cell","The cytoplasm and membranes divide to form two identical cells"]},
+{q:"Explain why gas exchange surfaces are usually thin with a large surface area.",m:["A thin surface gives a short diffusion distance","A large surface area allows more diffusion at once","So the rate of diffusion is faster"]},
+{q:"Describe how stem cells can be used in medicine.",m:["Stem cells from bone marrow can be transplanted to replace faulty blood cells","Embryonic stem cells can be used to grow replacement tissues or organs","Cloned stem cells would not be rejected by the patient’s immune system"]},
+{q:"Describe how you could investigate the effect of sugar concentration on osmosis in potato cylinders.",m:["Cut cylinders of equal size and measure the mass of each","Place each in a different concentration of sugar solution","Leave them for the same length of time","Dry and re-weigh them, then calculate the percentage change in mass"]}],
+org:[{q:"Explain why bile is important for the digestion of fats.",m:["Bile emulsifies fat, breaking large droplets into smaller ones","This increases the surface area for lipase to work on","Bile is alkaline, so it neutralises stomach acid and gives the enzymes in the small intestine the right pH"]},{q:"Describe the path of blood from the right ventricle until it returns to the heart.",m:["The right ventricle pumps deoxygenated blood into the pulmonary artery","The blood goes to the lungs, where it picks up oxygen","Oxygenated blood returns in the pulmonary vein","It enters the left atrium"]},
+{q:"Describe how to test a food for protein.",m:["Add Biuret reagent to the food sample","A positive result is a colour change from blue to purple"]},
+{q:"Explain how enzymes work, using the lock and key model.",m:["Each enzyme has an active site with a specific shape","The substrate fits into the active site","The enzyme then catalyses the reaction"]},
+{q:"Explain why a high temperature stops an enzyme working.",m:["High temperature changes the shape of the active site","The substrate no longer fits, so the enzyme is denatured","The reaction cannot be catalysed"]},
+{q:"Explain why the left ventricle has a thicker wall than the right ventricle.",m:["The left ventricle pumps blood around the whole body","This needs a higher pressure","The thicker muscle wall produces a stronger contraction"]},
+{q:"Describe how red blood cells are adapted to carry oxygen.",m:["They contain haemoglobin, which binds to oxygen","They have a biconcave shape, giving a large surface area","They have no nucleus, so there is more room for haemoglobin"]},
+{q:"Explain how a leaf is adapted for photosynthesis.",m:["It is broad and flat, so a large surface area absorbs light","It is thin, so carbon dioxide has a short distance to diffuse","Palisade cells near the top contain many chloroplasts","Stomata let carbon dioxide in and oxygen out"]},
+{q:"Describe how water moves through a plant from the root to the leaf.",m:["Water enters root hair cells by osmosis","It travels up the xylem","It evaporates from the leaf and leaves through the stomata (transpiration)"]},
+{q:"Explain what is meant by a non-communicable disease and give one risk factor.",m:["A disease that cannot be passed from one person to another","One risk factor, such as smoking, obesity or alcohol"]}],
+inf:[{q:"Explain how a vaccine gives long-term protection against a disease.",m:["The vaccine contains a dead or inactive form of the pathogen","Its antigens trigger white blood cells to make antibodies","Memory cells are produced","If the live pathogen enters later, memory cells make antibodies much faster, so you do not become ill"]},{q:"Explain why antibiotic-resistant bacteria are a problem.",m:["A mutation can make some bacteria resistant to an antibiotic","Resistant bacteria survive treatment and reproduce, passing on the resistance","The antibiotic no longer works, so infections are harder to treat and can spread"]},
+{q:"Describe two ways in which pathogens can be spread.",m:["One way, such as droplets in the air from coughs and sneezes","A second way, such as direct contact, contaminated food or water, or a vector"]},
+{q:"Describe how the body’s first line of defence protects against pathogens.",m:["The skin is a barrier that stops pathogens entering","The skin and eyes make antimicrobial substances","Hairs and mucus in the nose trap pathogens"]},
+{q:"Explain how white blood cells destroy pathogens.",m:["Phagocytes engulf and digest pathogens","Lymphocytes produce antibodies that target the pathogen","Some cells produce antitoxins that neutralise toxins"]},
+{q:"Explain how vaccination reduces the spread of measles in a population.",m:["Vaccinated people become immune","So fewer people can pass the virus on","If most of the population is immune, unvaccinated people are protected too (herd immunity)"]},
+{q:"Explain why a doctor will not prescribe antibiotics for a cold.",m:["A cold is caused by a virus","Antibiotics only kill bacteria","Using them unnecessarily increases antibiotic resistance"]},
+{q:"Describe how a new drug is tested before it is used on patients.",m:["It is tested in the laboratory on cells and tissues","It is tested on live animals to check it works and is safe","Clinical trials start with healthy volunteers using low doses","Patients are then tested to find the best dose"]},
+{q:"Describe how Salmonella food poisoning is spread and its symptoms.",m:["Spread by eating food contaminated with Salmonella bacteria","Symptoms include fever, cramps, vomiting and diarrhoea"]},
+{q:"Explain how a lack of magnesium ions affects a plant.",m:["Plants need magnesium ions to make chlorophyll","Without it the leaves turn yellow","So less photosynthesis happens"]}],
+bio:[{q:"Explain why the rate of photosynthesis increases and then levels off as light intensity increases.",m:["At first light intensity is the limiting factor, so the rate rises as light increases","At the plateau, light is no longer limiting","Another factor, such as carbon dioxide concentration or temperature, is now limiting"]},{q:"Describe anaerobic respiration in muscle cells and explain why it is less efficient than aerobic respiration.",m:["Glucose is broken down without oxygen","Lactic acid is produced","Much less energy is released because the glucose is not fully broken down"]},
+{q:"Write the word equation for photosynthesis.",m:["Carbon dioxide + water are the reactants","Glucose + oxygen are the products"]},
+{q:"Describe how you could investigate the effect of light intensity on the rate of photosynthesis in pondweed.",m:["Place pondweed in water under a lamp at a measured distance","Count the oxygen bubbles, or measure the volume of gas, in a set time","Repeat at different distances from the lamp","Keep temperature and other variables the same"]},
+{q:"Describe three uses of the glucose made by photosynthesis.",m:["Used in respiration to release energy","Converted to starch for storage","Used to make cellulose for cell walls, or fats, oils and proteins"]},
+{q:"Describe the changes in the body during exercise.",m:["Heart rate and breathing rate increase","More oxygen and glucose are delivered to the muscles","Muscles may respire anaerobically if oxygen is short","Lactic acid builds up and an oxygen debt forms"]},
+{q:"Compare aerobic and anaerobic respiration in humans.",m:["Aerobic needs oxygen; anaerobic does not","Aerobic releases much more energy","Aerobic makes carbon dioxide and water; anaerobic makes lactic acid"]},
+{q:"Explain what is meant by metabolism and give an example.",m:["Metabolism is the sum of all the reactions in a cell or the body","An example, such as making glycogen from glucose or breaking down proteins to urea"]},
+{q:"Explain why oxygen is needed after exercise has stopped.",m:["Lactic acid built up in the muscles during anaerobic respiration","Extra oxygen is needed to react with the lactic acid","This breaks it down to carbon dioxide and water"]},
+{q:"Explain why a plant cannot photosynthesise in the dark but still respires.",m:["Photosynthesis needs light energy","Respiration needs glucose and oxygen, not light","Plants respire all the time to release energy"]}],
+hom:[{q:"Describe how the body responds when blood glucose concentration is too high.",m:["The pancreas detects the high blood glucose","The pancreas releases insulin into the blood","Insulin makes liver and muscle cells take up glucose","The liver converts glucose into glycogen, so blood glucose falls"]},{q:"Describe the pathway of a reflex action from stimulus to response.",m:["A receptor detects the stimulus","A sensory neurone carries the impulse to the CNS","A relay neurone passes the impulse to a motor neurone","The motor neurone carries the impulse to the effector, which responds"]},
+{q:"Explain what is meant by homeostasis and give two conditions it controls.",m:["Homeostasis keeps internal conditions stable","One condition controlled, such as body temperature","A second condition, such as blood glucose or water content"]},
+{q:"Describe how the body responds to a fall in temperature.",m:["The thermoregulatory centre in the brain detects the change","Blood vessels in the skin constrict","Muscles shiver to release heat","Sweating stops"]},
+{q:"Describe the differences between nervous and hormonal responses.",m:["Nervous responses are fast; hormonal responses are slower","Nervous responses are short-lived; hormonal responses last longer","Hormones travel in the blood; impulses travel along neurones"]},
+{q:"Describe the roles of FSH and LH in the menstrual cycle.",m:["FSH causes an egg to mature in the ovary","FSH stimulates the ovary to produce oestrogen","LH stimulates the release of the egg (ovulation)"]},
+{q:"Explain how hormonal contraceptives prevent pregnancy.",m:["They contain oestrogen and/or progesterone","These inhibit the production of FSH","So eggs do not mature and are not released"]},
+{q:"Explain the difference between type 1 and type 2 diabetes.",m:["In type 1 the pancreas makes little or no insulin","In type 2 body cells no longer respond properly to insulin","Type 1 is treated with insulin injections; type 2 mainly with diet and exercise"]},
+{q:"Explain how the eye responds to bright light.",m:["The pupil gets smaller","Circular muscles in the iris contract and radial muscles relax","This reduces the amount of light entering the eye"]},
+{q:"Describe how the body responds when water intake is low.",m:["The brain detects the low water content of the blood","The pituitary gland releases more ADH","ADH makes the kidney tubules reabsorb more water","A small volume of concentrated urine is produced"]}],
+inh:[{q:"Two parents are both Bb, where b causes a recessive condition. Explain the chance that their child has the condition.",m:["Each parent can pass on B or b","The possible combinations are BB, Bb, Bb and bb","Only bb has the condition, so the chance is 1 in 4 (25%)"]},{q:"Explain how natural selection can make a species better adapted to its environment.",m:["There is variation in the population because of differences in genes","Individuals with advantageous characteristics are more likely to survive and reproduce","They pass on the alleles for these characteristics to their offspring","Over many generations the advantageous alleles become more common"]},
+{q:"Describe the structure of DNA.",m:["Two strands forming a double helix","Made of repeating units called nucleotides","Each nucleotide has a sugar, a phosphate and one base","The bases pair up: A with T and C with G"]},
+{q:"Describe the differences between sexual and asexual reproduction.",m:["Sexual involves the fusion of gametes; asexual involves only one parent","Sexual reproduction produces genetic variation","Asexual reproduction produces genetically identical clones"]},
+{q:"Explain how a mutation can change a protein.",m:["A mutation changes the DNA base sequence","This may change the order of amino acids","The protein may have a different shape and may not work"]},
+{q:"Explain how Mendel’s work helped our understanding of inheritance.",m:["He crossed pea plants and counted the offspring","He showed that characteristics are inherited in units (now called genes)","He found that some characteristics are dominant and some are recessive"]},
+{q:"Describe how genetic engineering produces a crop with a new characteristic.",m:["A gene for the characteristic is cut out of an organism’s chromosome","The gene is inserted into a vector such as a plasmid or virus","The vector transfers the gene into the crop plant’s cells","The plants develop the characteristic, for example pest resistance"]},
+{q:"Explain how fossils provide evidence for evolution.",m:["Fossils are the remains of organisms from millions of years ago","They show how organisms have changed over time","Older fossils are found in deeper rocks, so a sequence can be seen"]},
+{q:"Describe how selective breeding can produce dairy cows that give more milk.",m:["Choose parents that produce the most milk","Breed them together","Select the best offspring and repeat over many generations"]},
+{q:"Explain why a species may become extinct.",m:["Changes to the environment, such as climate change","New predators, diseases or competitors","The species cannot adapt quickly enough"]}],
+eco:[{q:"Describe how you would use a quadrat to estimate the number of daisies in a field.",m:["Place quadrats at random positions in the field","Count the daisies in each quadrat","Calculate the mean number of daisies per quadrat","Multiply the mean by (area of field ÷ area of quadrat)"]},{q:"Explain why only about 10% of the energy in one trophic level is passed to the next.",m:["Not all of the organism is eaten, or some parts cannot be digested","Energy is lost as heat from respiration","Energy is lost in waste such as faeces and urine"]},
+{q:"Describe how a transect is used to study how the distribution of a species changes.",m:["Lay a tape measure in a straight line across the habitat","Place quadrats at regular intervals along the line","Count the species in each quadrat"]},
+{q:"Describe how carbon is returned to the atmosphere.",m:["Respiration by plants, animals and microorganisms","Combustion of fuels","Decomposition by microorganisms"]},
+{q:"Explain how decomposers return nutrients to the soil.",m:["Decomposers break down dead material and waste","This releases nutrients into the soil","Plants take up the nutrients again through their roots"]},
+{q:"Explain how temperature, water and oxygen affect the rate of decay.",m:["Warmer temperatures speed up decay, up to an optimum","Moist conditions speed up decay","Oxygen is needed for decay by aerobic microorganisms"]},
+{q:"Describe how the water cycle provides fresh water.",m:["Energy from the Sun evaporates water from the sea and land","Water vapour condenses to form clouds and falls as precipitation","Water flows into rivers and lakes, providing fresh water"]},
+{q:"Explain how deforestation affects the environment.",m:["Less photosynthesis, so less carbon dioxide is absorbed","Burning and decay of trees release carbon dioxide","Loss of habitats reduces biodiversity"]},
+{q:"Describe two ways of reducing the impact of humans on biodiversity.",m:["One valid way, such as protecting habitats or breeding programmes for endangered species","A second valid way, such as reducing deforestation or recycling"]},
+{q:"Explain how a food web shows that organisms depend on each other.",m:["Organisms feed on and are fed on by several others","If one species decreases, others that feed on it or compete with it are affected","So organisms in a community are interdependent"]}]};
+var CT=[
+{id:"c1",n:"Atomic structure and the periodic table",f:["Atoms have a nucleus of protons and neutrons with electrons in shells. Elements in the same group have the same number of outer electrons."],q:[{q:"How many electrons can the first shell of an atom hold?",o:["2","4","8","18"],a:0,e:"The first shell holds up to 2 electrons."},{q:"An atom has 11 protons and 12 neutrons. What is its mass number?",o:["11","12","23","1"],a:2,e:"Mass number = protons + neutrons = 23."}]},
+{id:"c2",n:"Bonding, structure and properties",f:["Ionic compounds have giant lattices with strong forces between ions. Simple molecules have weak forces between molecules, so low melting points."],q:[{q:"Why does sodium chloride have a high melting point?",o:["Strong forces between ions in a lattice","Weak forces between molecules","Free electrons","Small molecules"],a:0,e:"Ionic lattices need a lot of energy to overcome the strong electrostatic forces."},{q:"Which substance conducts electricity when solid?",o:["Sodium chloride","Diamond","Copper","Water"],a:2,e:"Metals have delocalised electrons that carry charge."}]},
+{id:"c3",n:"Quantitative chemistry",f:["Moles = mass ÷ relative formula mass (Mr). Mass is conserved in a chemical reaction."],q:[{q:"What is the Mr of water, H₂O? (Ar: H = 1, O = 16)",o:["17","18","16","34"],a:1,e:"2 × 1 + 16 = 18."},{q:"How many moles are in 44 g of carbon dioxide (Mr = 44)?",o:["0.5","1","44","2"],a:1,e:"Moles = 44 ÷ 44 = 1."}]},
+{id:"c4",n:"Chemical changes",f:["Metal + acid gives a salt and hydrogen. Acid + alkali gives a salt and water. A more reactive metal displaces a less reactive one."],q:[{q:"Which gas is made when magnesium reacts with hydrochloric acid?",o:["Oxygen","Hydrogen","Carbon dioxide","Chlorine"],a:1,e:"Metal + acid gives a salt and hydrogen."},{q:"Which pH value is a strong acid most likely to have?",o:["1","7","10","14"],a:0,e:"Strong acids have low pH values."}]},
+{id:"c5",n:"Energy changes",f:["Exothermic reactions release energy and the temperature rises. Endothermic reactions take in energy and the temperature falls."],q:[{q:"Which is an exothermic process?",o:["Combustion","Thermal decomposition","Photosynthesis","Dissolving ammonium nitrate"],a:0,e:"Combustion releases heat to the surroundings."},{q:"What is activation energy?",o:["The energy released overall","The minimum energy needed for particles to react","The energy of the products","The energy of the catalyst"],a:1,e:"Particles must collide with at least this energy to react."}]},
+{id:"c6",n:"Rate and extent of chemical change",f:["Rate increases with higher temperature, concentration, pressure, surface area or a catalyst. Catalysts lower the activation energy and are not used up."],q:[{q:"Which change does NOT increase the rate of a reaction?",o:["Using larger lumps of solid","Increasing temperature","Adding a catalyst","Increasing concentration"],a:0,e:"Larger lumps have a smaller surface area, so the rate decreases."},{q:"What is true at equilibrium?",o:["Both reactions stop","Forward and reverse reactions happen at the same rate","Only the forward reaction happens","The reaction is exothermic"],a:1,e:"At equilibrium the rates are equal, so amounts stay constant."}]},
+{id:"c7",n:"Organic chemistry",f:["Crude oil is separated by fractional distillation. Alkanes have only single C–C bonds. Alkenes have a C=C double bond and decolourise bromine water."],q:[{q:"What is the formula of propane?",o:["C₃H₆","C₃H₈","C₂H₆","C₄H₁₀"],a:1,e:"Alkanes are CₙH₂ₙ₊₂, so n = 3 gives C₃H₈."},{q:"What happens when bromine water is shaken with an alkene?",o:["It stays orange","It turns colourless","It turns blue","It turns green"],a:1,e:"Alkenes react with bromine, so the orange colour disappears."}]},
+{id:"c8",n:"Chemical analysis",f:["Rf = distance moved by the substance ÷ distance moved by the solvent. Flame tests identify metal ions."],q:[{q:"What colour does a sodium compound give in a flame test?",o:["Lilac","Yellow","Brick red","Green"],a:1,e:"Sodium is yellow, potassium lilac, calcium brick red and copper green."},{q:"A spot moves 3 cm and the solvent moves 6 cm. What is the Rf value?",o:["0.5","2","3","18"],a:0,e:"Rf = 3 ÷ 6 = 0.5."}]},
+{id:"c9",n:"Chemistry of the atmosphere",f:["Oxygen built up as algae and plants photosynthesised. Greenhouse gases include carbon dioxide, methane and water vapour."],q:[{q:"Roughly what percentage of today’s atmosphere is nitrogen?",o:["21%","50%","78%","99%"],a:2,e:"About 78% nitrogen and 21% oxygen."},{q:"Which gas is made when a hydrocarbon burns completely?",o:["Carbon monoxide","Carbon dioxide","Soot","Hydrogen"],a:1,e:"Complete combustion gives carbon dioxide and water."}]},
+{id:"c10",n:"Using resources",f:["Potable water is safe to drink. Life cycle assessments look at the environmental impact of a product from raw materials to disposal."],q:[{q:"Which methods make sea water potable?",o:["Filtration only","Distillation or reverse osmosis","Sedimentation only","Adding chlorine only"],a:1,e:"These remove the dissolved salts."},{q:"What is ammonia made from in the Haber process?",o:["Nitrogen and hydrogen","Nitrogen and oxygen","Carbon and hydrogen","Oxygen and hydrogen"],a:0,e:"Nitrogen and hydrogen react to make ammonia, used in fertilisers."}]}];
+var CW={
+c1:[{q:"Explain why the alkali metals become more reactive down group 1.",m:["The outer electron is further from the nucleus","So there is weaker attraction between the nucleus and the outer electron","The outer electron is lost more easily"]}],
+c2:[{q:"Explain why diamond is very hard.",m:["Each carbon atom forms four strong covalent bonds","The atoms form a rigid giant covalent structure","A lot of energy is needed to break these bonds"]}],
+c3:[{q:"Calculate the mass of 0.25 mol of calcium carbonate, CaCO₃. (Ar: Ca = 40, C = 12, O = 16)",m:["Mr = 40 + 12 + (3 × 16)","Mr = 100","Mass = 0.25 × 100 = 25 g"]}],
+c4:[{q:"Describe how to make pure, dry crystals of copper sulfate from copper oxide and sulfuric acid.",m:["Add copper oxide to warm acid until no more reacts","Filter off the excess copper oxide","Heat the filtrate to evaporate some water, then leave to crystallise","Filter off the crystals and dry them"]}],
+c5:[{q:"Explain, in terms of bond energies, why a reaction is exothermic.",m:["Energy is needed to break the bonds in the reactants","Energy is released when bonds form in the products","More energy is released forming bonds than is needed to break bonds"]}],
+c6:[{q:"Explain why increasing the concentration of a reactant increases the rate of reaction.",m:["There are more particles in the same volume","So collisions are more frequent","More successful collisions happen each second"]}],
+c7:[{q:"Describe how fractional distillation separates crude oil.",m:["The oil is heated until it vaporises","The vapour enters a column that is hotter at the bottom and cooler at the top","Fractions condense at different heights because they have different boiling points","Smaller molecules with lower boiling points condense nearer the top"]}],
+c8:[{q:"Describe the test for carbon dioxide gas and give the result.",m:["Bubble the gas through limewater","The limewater turns cloudy"]}],
+c9:[{q:"Explain how increasing greenhouse gases causes global warming.",m:["Greenhouse gases absorb infrared radiation from the Earth’s surface","They re-radiate some of it back towards the Earth","This traps heat, so the average temperature rises"]}],
+c10:[{q:"Describe how waste water is treated before it is released.",m:["Screening and grit removal take out large objects","Sedimentation removes solids as sewage sludge","Sludge is digested anaerobically and the effluent is treated with aerobic biological processes"]}]};
+var PT=[
+{id:"p1",n:"Energy",f:["Kinetic energy = ½ × mass × speed². Gravitational potential energy = mass × g × height. Efficiency = useful output ÷ total input."],q:[{q:"A 2 kg ball moves at 3 m/s. What is its kinetic energy?",o:["6 J","9 J","12 J","18 J"],a:1,e:"KE = ½ × 2 × 3² = 9 J."},{q:"Which energy store increases when a book is lifted?",o:["Gravitational potential","Kinetic","Thermal","Elastic"],a:0,e:"Lifting an object raises its gravitational potential energy."}]},
+{id:"p2",n:"Electricity",f:["Potential difference = current × resistance. Power = potential difference × current. In series the current is the same; in parallel the potential difference is the same."],q:[{q:"A resistor has 12 V across it and a current of 3 A. What is its resistance?",o:["4 Ω","9 Ω","15 Ω","36 Ω"],a:0,e:"R = V ÷ I = 12 ÷ 3 = 4 Ω."},{q:"Which component’s resistance falls as light intensity rises?",o:["Thermistor","LDR","Diode","Filament lamp"],a:1,e:"An LDR (light-dependent resistor) has lower resistance in bright light."}]},
+{id:"p3",n:"Particle model of matter",f:["Density = mass ÷ volume. Heating a substance increases its internal energy. Mass is conserved in changes of state."],q:[{q:"A block has mass 200 g and volume 50 cm³. What is its density?",o:["0.25 g/cm³","4 g/cm³","10 g/cm³","150 g/cm³"],a:1,e:"200 ÷ 50 = 4 g/cm³."},{q:"A gas is heated at constant volume. What happens?",o:["Pressure falls","Particles stop moving","Particles move faster and pressure rises","Particles get bigger"],a:2,e:"Faster particles collide with the walls harder and more often."}]},
+{id:"p4",n:"Atomic structure",f:["Alpha particles are helium nuclei, beta particles are fast electrons and gamma rays are electromagnetic waves. Half-life is the time for the activity to halve."],q:[{q:"Which type of radiation is the most ionising?",o:["Alpha","Beta","Gamma","X-ray"],a:0,e:"Alpha is highly ionising but weakly penetrating."},{q:"A sample has a half-life of 4 days. How much of 80 g remains after 8 days?",o:["40 g","20 g","10 g","0 g"],a:1,e:"Two half-lives: 80 → 40 → 20 g."}]},
+{id:"p5",n:"Forces",f:["Resultant force = mass × acceleration. Weight = mass × gravitational field strength. Speed = distance ÷ time."],q:[{q:"A 5 kg object accelerates at 2 m/s². What is the resultant force?",o:["2.5 N","7 N","10 N","25 N"],a:2,e:"F = ma = 5 × 2 = 10 N."},{q:"Which quantity has both size and direction?",o:["Speed","Mass","Velocity","Distance"],a:2,e:"Velocity is a vector. Speed, mass and distance are scalars."}]},
+{id:"p6",n:"Waves",f:["Wave speed = frequency × wavelength. Transverse waves oscillate at right angles to the direction of travel; longitudinal waves oscillate parallel to it."],q:[{q:"A wave has frequency 50 Hz and wavelength 2 m. What is its speed?",o:["25 m/s","52 m/s","100 m/s","0.04 m/s"],a:2,e:"v = f × λ = 50 × 2 = 100 m/s."},{q:"Which of these is a longitudinal wave?",o:["Light","Sound","Radio waves","X-rays"],a:1,e:"Sound waves are longitudinal. The others are transverse electromagnetic waves."}]},
+{id:"p7",n:"Magnetism and electromagnetism",f:["Like magnetic poles repel and unlike poles attract. A current in a wire creates a magnetic field. Transformers change potential difference."],q:[{q:"What happens when two north poles are brought together?",o:["They attract","They repel","Nothing","They become south poles"],a:1,e:"Like poles repel."},{q:"Which device changes the potential difference of an alternating current?",o:["Motor","Transformer","Resistor","Diode"],a:1,e:"Transformers step the potential difference up or down."}]},
+{id:"p8",n:"Space physics",f:["Stars form from clouds of dust and gas pulled together by gravity. Fusion of hydrogen nuclei releases energy in stars."],q:[{q:"Which force keeps the planets in orbit around the Sun?",o:["Gravity","Friction","Magnetism","Air resistance"],a:0,e:"The Sun’s gravity provides the force that keeps planets in orbit."},{q:"Which process releases energy in the Sun?",o:["Nuclear fission","Nuclear fusion","Combustion","Radioactive decay"],a:1,e:"Hydrogen nuclei fuse to form helium."}]}];
+var PW={
+p1:[{q:"A motor transfers 500 J of energy and 400 J is useful. Calculate its efficiency.",m:["Efficiency = useful energy ÷ total energy","400 ÷ 500 = 0.8","Efficiency = 80%"]}],
+p2:[{q:"Calculate the power of a kettle that draws 10 A from a 230 V supply.",m:["Power = potential difference × current","230 × 10","Power = 2300 W"]}],
+p3:[{q:"Explain why the pressure of a gas rises when it is compressed at constant temperature.",m:["The same number of particles are in a smaller volume","So particles hit the container walls more often","This gives a larger force per unit area"]}],
+p4:[{q:"Describe the difference between irradiation and contamination.",m:["Irradiation is exposure to radiation from a source outside the body","Contamination is when radioactive material gets on or into the body","A contaminated person keeps being exposed because the source stays on or inside them"]}],
+p5:[{q:"Explain why a skydiver reaches terminal velocity.",m:["At first weight is greater than air resistance, so the skydiver accelerates","As speed increases, air resistance increases","When air resistance equals weight the resultant force is zero, so speed stays constant"]}],
+p6:[{q:"Describe what happens to a light ray when it enters a glass block at an angle.",m:["The ray slows down and bends (refracts)","It bends towards the normal as it enters the glass","It bends away from the normal as it leaves the glass"]}],
+p7:[{q:"Explain how a step-up transformer works.",m:["An alternating current in the primary coil creates a changing magnetic field in the iron core","This induces an alternating potential difference in the secondary coil","The secondary coil has more turns than the primary, so the potential difference is higher"]}],
+p8:[{q:"Describe how the life cycle of a star much more massive than the Sun differs from the Sun’s.",m:["It becomes a red supergiant","It explodes as a supernova","It leaves a neutron star or black hole instead of a white dwarf"]}]};
+var CUR="Biology",DATA={Biology:{T:T,W:W,k:4},Chemistry:{T:CT,W:CW,k:5},Physics:{T:PT,W:PW,k:4}};
+var app=document.getElementById("app"),prog={};
+try{prog=JSON.parse(localStorage.getItem("rr")||"{}")}catch(e){}
+if(!prog.best)prog.best={};
+function save(){try{localStorage.setItem("rr",JSON.stringify(prog))}catch(e){}}
+function cnt(){document.getElementById("cnt").textContent=(prog.done||0)+" questions done"}
+function shuf(a){return a.map(function(x){return[Math.random(),x]}).sort(function(a,b){return a[0]-b[0]}).map(function(p){return p[1]})}
+function plates(t){var b=prog.best[t.id]||0,h="";for(var i=0;i<t.q.length;i++)h+="<span class='"+(i<b?"on":"")+"'></span>";return"<div class='plates' aria-label='Best score "+b+" out of "+t.q.length+"'>"+h+"</div>"}
+var S=[{n:"Biology",live:1},{n:"Chemistry",live:1},{n:"Physics",live:1},{n:"Maths"},{n:"English Language"},{n:"English Literature"}];
+function home(){
+  cnt();
+  app.innerHTML="<h1>Free GCSE revision for all students.</h1><p>Short practice quizzes with a worked explanation after every answer. Choose your subject, pick a topic and start revising. No sign-up needed.</p><div class='acts'><button class='cta' id='dl'>Daily 5: 3-minute quiz</button><button class='ghost' id='cw'>Command word guide</button></div>"+streak()+"<h2>Choose your subject</h2><div class='subs'>"+S.map(function(s){return"<button class='row sub' data-n='"+s.n+"'"+(s.live?"":" disabled")+"><span><b>"+s.n+"</b><small>"+(s.live?DATA[s.n].T.length+" topics":"Coming soon")+"</small></span></button>"}).join("")+"</div><p class='note'>AQA GCSE. More subjects are on the way.</p>";
+  document.getElementById("dl").onclick=daily;document.getElementById("cw").onclick=cmd;
+  app.querySelectorAll(".sub").forEach(function(b){b.onclick=function(){subject(b.dataset.n)}});
+  window.scrollTo(0,0);
+}
+function written(qs,title,t){
+  var k=0,got=0,tot=0;
+  function count(bs){var s=0;bs.forEach(function(x){if(x.checked)s++});return s}
+  function show(){
+    var q=qs[k],n=q.m.length;
+    app.innerHTML="<h2>"+title+"</h2><div class='bar'><div style='width:"+(k/qs.length*100)+"%'></div></div><p class='meta'>Question "+(k+1)+" of "+qs.length+" ["+n+" marks]</p><p class='q'>"+q.q+"</p><textarea id='ans' rows='6' aria-label='Your answer' placeholder='Write your answer here'></textarea><div id='fb'><button class='cta' id='ms'>Show mark scheme</button></div>";
+    clearInterval(ti);
+    var ms=document.getElementById("ms");
+    if(timed){var left=n*60,tp=document.createElement("p");tp.className="meta";tp.innerHTML="Time left: <b id='tl'></b>";app.insertBefore(tp,document.getElementById("ans"));var tick=function(){var e=document.getElementById("tl");if(!e){clearInterval(ti);return}e.textContent=Math.floor(left/60)+":"+("0"+left%60).slice(-2);if(left--<=0){clearInterval(ti);e.textContent="Time’s up";ms.click()}};tick();ti=setInterval(tick,1000)}
+    ms.onclick=function(){clearInterval(ti);
+      document.getElementById("ans").readOnly=true;
+      document.getElementById("fb").innerHTML="<div class='why'><p><b>Mark scheme.</b> Tick each point your answer made. One mark for each.</p>"+q.m.map(function(x){return"<label class='tick'><input type='checkbox'><span>"+x+"</span></label>"}).join("")+"<p id='sc'><b>0/"+n+"</b></p></div><button class='cta' id='nx'>"+(k==qs.length-1?"See my score":"Next question")+"</button>";
+      var bs=app.querySelectorAll("input[type=checkbox]");
+      bs.forEach(function(c){c.onchange=function(){document.getElementById("sc").innerHTML="<b>"+count(bs)+"/"+n+"</b>"}});
+      document.getElementById("nx").onclick=function(){got+=count(bs);tot+=n;prog.done=(prog.done||0)+1;save();cnt();k++;if(k<qs.length){show()}else{fin()}};
+    };
+  }
+  function fin(){
+    app.innerHTML="<h2>Written questions complete</h2><div class='score'>"+got+"/"+tot+"</div><p>"+(got>=tot*.7?"Strong answers. Check any missed points, then go again.":"Read the points you missed, then try again from memory.")+"</p><div class='acts'><button class='cta' id='ag'>Go again</button><button class='ghost' id='tp'>All topics</button></div>";
+    document.getElementById("ag").onclick=function(){written(shuf(qs),title,t)};
+    document.getElementById("tp").onclick=subject;
+    window.scrollTo(0,0);
+  }
+  show();window.scrollTo(0,0);
+}
+var CMD=[
+{w:"State, name or give",d:"Write a short, direct fact. No explanation is needed.",t:"One fact per mark. Extra detail earns nothing, so keep it short.",q:"State the organ that makes insulin. [1 mark]",a:"The pancreas."},
+{w:"Describe",d:"Say what happens or what something looks like, in order. You do not need to give reasons.",t:"Write a step or feature for each mark. Use sequence words like first, then, finally.",q:"Describe how to test a food for starch. [2 marks]",a:"Add iodine solution to the food. If starch is present, the colour changes from orange-brown to blue-black."},
+{w:"Explain",d:"Give reasons. Say why or how something happens.",t:"Use because, so and therefore, and link each point to the next. A fact with no reason loses marks.",q:"Explain why an animal cell shrinks in a concentrated sugar solution. [3 marks]",a:"The solution outside has a lower water concentration than the cell. Water moves out of the cell by osmosis through the partially permeable membrane, so the cell loses volume and shrinks."},
+{w:"Compare",d:"Describe the similarities and differences between things.",t:"Write about both things in the same sentence, using words like whereas, but and both. Do not describe them separately.",q:"Compare aerobic and anaerobic respiration. [2 marks]",a:"Aerobic respiration uses oxygen whereas anaerobic respiration does not. Aerobic respiration releases much more energy from each glucose molecule than anaerobic respiration."},
+{w:"Suggest",d:"Apply what you know to a new situation. The exact answer is not in your notes.",t:"Use the information in the question and your knowledge to give a sensible, reasoned idea.",q:"Suggest why someone who exercises regularly has a lower resting heart rate. [2 marks]",a:"Regular exercise makes the heart muscle stronger. So each beat pumps more blood, and fewer beats are needed to supply the body."},
+{w:"Calculate",d:"Work out a numerical answer.",t:"Write the equation, show every step, and add the units. You can get marks for working even if the final answer is wrong.",q:"Calculate the cardiac output when the heart rate is 70 beats per minute and the stroke volume is 75 cm³. [2 marks]",a:"Cardiac output = heart rate × stroke volume = 70 × 75 = 5250 cm³ per minute."},
+{w:"Evaluate",d:"Weigh up the evidence for and against, then reach a judgement.",t:"Give points on both sides, then finish with a conclusion and a reason for it. The conclusion earns a mark.",q:"Evaluate the use of statins to reduce the risk of heart disease. [4 marks]",a:"Statins lower blood cholesterol, which reduces fatty deposits in the arteries and the risk of heart attacks. However, they can cause side effects such as muscle pain, and they do not work for everyone. Overall, statins are worth using for people at high risk, because the benefits outweigh the risks for most patients."}];
+function today(o){return new Date(Date.now()-(o||0)*864e5).toISOString().slice(0,10)}
+function streak(){return prog.streak&&(prog.day==today()||prog.day==today(1))?"<p class='note'>Daily streak: "+prog.streak+" day"+(prog.streak>1?"s":"")+"</p>":""}
+function daily(){
+  var pool=[],out=[],used={},s=+today().replace(/-/g,"");
+  Object.keys(DATA).forEach(function(k){DATA[k].T.forEach(function(t){pool=pool.concat(t.q)})});
+  while(out.length<5){s=(s*16807)%2147483647;var i=s%pool.length;if(!used[i]){used[i]=1;out.push(pool[i])}}
+  quiz(out,"Daily 5",null);
+}
+function cmd(){
+  app.innerHTML="<h2>Command word guide</h2><p>Exam questions start with a command word that tells you what to write. Knowing it is a quick way to gain marks. Open each example to see a full-marks answer.</p>"+CMD.map(function(c){return"<h3>"+c.w+"</h3><p>"+c.d+"</p><p class='fact'><b>Tip:</b> "+c.t+"</p><details><summary><b>"+c.q+"</b></summary><p class='why'>"+c.a+"</p></details>"}).join("")+"<div class='acts'><button class='ghost' id='bk3'>Back to home</button></div>";
+  document.getElementById("bk3").onclick=home;
+  window.scrollTo(0,0);
+}
+function sheet(i){
+  var t=T[i],w=W[t.id]||[];
+  app.innerHTML="<h2>"+t.n+": cheat sheet</h2><p class='note'>AQA GCSE "+CUR+"</p><h3>Key facts</h3>"+t.f.map(function(x){return"<p class='fact'>"+x+"</p>"}).join("")+"<h3>Key points</h3><ul>"+t.q.map(function(q){return"<li>"+q.e+"</li>"}).join("")+"</ul><h3>Exam answer points</h3>"+w.map(function(x){return"<p><b>"+x.q+"</b></p><ul>"+x.m.map(function(m){return"<li>"+m+"</li>"}).join("")+"</ul>"}).join("")+"<div class='acts'><button class='cta' id='pr'>Print</button><button class='ghost' id='bk4'>Back</button></div><p class='note'>If Print does not open, press Ctrl+P (or Cmd+P on a Mac).</p>";
+  document.getElementById("pr").onclick=function(){window.print()};
+  document.getElementById("bk4").onclick=function(){topic(i)};
+  window.scrollTo(0,0);
+}
+function rows(f){return T.map(function(t,i){return f(i)?"<button class='row' data-i='"+i+"'><span><b>"+t.n+"</b><small>"+(mode=="w"?W[t.id].length+" written questions":t.q.length+" questions")+"</small></span>"+plates(t)+"</button>":""}).join("")}
+function subject(n){
+  if(typeof n=="string"){CUR=n;T=DATA[n].T;W=DATA[n].W}
+  cnt();
+  app.innerHTML="<button class='ghost' id='bkh'>All subjects</button><h2>AQA GCSE "+CUR+"</h2><p class='note'>Exam-style questions written for RevisionReps. For real papers, use AQA’s free past papers.</p><div class='seg'><button id='m1' class='"+(mode=="mc"?"on":"")+"'>Multiple choice</button><button id='m2' class='"+(mode=="w"?"on":"")+"'>Written, self-marked</button></div><label class='tick'><input type='checkbox' id='tm'"+(timed?" checked":"")+"><span>Exam timer: one minute per mark (written questions)</span></label><button class='cta' id='full'>Start a mixed quiz</button><h3>Paper 1</h3>"+rows(function(i){return i<DATA[CUR].k})+"<h3>Paper 2</h3>"+rows(function(i){return i>=DATA[CUR].k})+
+  ""+
+  "";
+  document.getElementById("full").onclick=function(){
+    var all=[];T.forEach(function(t){all=all.concat(t.q)});
+    if(mode=="w"){var wa=[];T.forEach(function(x){wa=wa.concat(W[x.id])});written(shuf(wa).slice(0,5),"Mixed written questions",null)}else{quiz(shuf(all).slice(0,10),"Mixed quiz",null)}};
+  app.querySelectorAll(".row").forEach(function(b){b.onclick=function(){topic(+b.dataset.i)}});
+  document.getElementById("bkh").onclick=home;
+  document.getElementById("m1").onclick=function(){mode="mc";subject()};
+  document.getElementById("m2").onclick=function(){mode="w";subject()};
+  document.getElementById("tm").onchange=function(){timed=this.checked};
+  window.scrollTo(0,0);
+}
+function topic(i){
+  var t=T[i];
+  app.innerHTML="<h2>"+t.n+"</h2><h3>Know this first</h3>"+t.f.map(function(x){return"<p class='fact'>"+x+"</p>"}).join("")+
+  "<div class='acts'><button class='cta' id='go'>"+(mode=="w"?"Start written questions ("+W[t.id].length+")":"Start quiz of "+t.q.length)+"</button><button class='ghost' id='sh'>Cheat sheet</button><button class='ghost' id='bk'>All topics</button></div>";
+  document.getElementById("go").onclick=function(){mode=="w"?written(shuf(W[t.id]),t.n,t):quiz(shuf(t.q),t.n,t)};
+  document.getElementById("bk").onclick=subject;
+  document.getElementById("sh").onclick=function(){sheet(i)};
+  window.scrollTo(0,0);
+}
+function quiz(qs,title,t){
+  var k=0,score=0;
+  function show(){
+    var q=qs[k],opts=shuf(q.o.map(function(x,j){return{t:x,c:j===q.a}}));
+    app.innerHTML="<h2>"+title+"</h2><div class='bar'><div style='width:"+(k/qs.length*100)+"%'></div></div><p class='meta'>Question "+(k+1)+" of "+qs.length+"</p><p class='q'>"+q.q+"</p><div id='os'></div><div id='fb'></div>";
+    var box=document.getElementById("os");
+    opts.forEach(function(o){
+      var b=document.createElement("button");b.className="opt";b.textContent=o.t;
+      b.onclick=function(){
+        var all=box.querySelectorAll(".opt");
+        all.forEach(function(x,j){x.disabled=true;if(opts[j].c)x.classList.add("good")});
+        if(o.c){score++}else{b.classList.add("bad")}
+        prog.done=(prog.done||0)+1;save();cnt();
+        var last=k===qs.length-1;
+        document.getElementById("fb").innerHTML="<div class='why"+(o.c?"":" no")+"'><p><b>"+(o.c?"Correct.":"Not quite.")+"</b> "+q.e+"</p></div><button class='cta' id='nx'>"+(last?"See my score":"Next question")+"</button>";
+        var n=document.getElementById("nx");n.focus();
+        n.onclick=function(){k++;if(k<qs.length){show()}else{done()}};
+      };
+      box.appendChild(b);
+    });
+  }
+  function done(){
+    if(title=="Daily 5"&&prog.day!=today()){prog.streak=prog.day==today(1)?(prog.streak||0)+1:1;prog.day=today();save()}
+    if(t&&score>(prog.best[t.id]||0)){prog.best[t.id]=score;save()}
+    var msg=score===qs.length?"Full marks. Every question right.":score>=qs.length/2?"Solid work. Go again to lock it in.":"Good start. Read the facts, then try again.";
+    app.innerHTML="<h2>Quiz complete</h2><div class='score'>"+score+"/"+qs.length+"</div><p>"+msg+"</p><div class='acts'><button class='cta' id='ag'>Go again</button><button class='ghost' id='tp'>All topics</button></div>";
+    document.getElementById("ag").onclick=function(){quiz(t?shuf(t.q):shuf([].concat.apply([],T.map(function(x){return x.q}))).slice(0,10),title,t)};
+    document.getElementById("tp").onclick=subject;
+    window.scrollTo(0,0);
+  }
+  show();window.scrollTo(0,0);
+}
+document.getElementById("home").onclick=home;
+home();
+</script>
+</body>
+</html>
